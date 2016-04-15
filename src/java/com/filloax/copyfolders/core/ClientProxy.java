@@ -26,7 +26,7 @@ public class ClientProxy extends CommonProxy {
     }
     
     @Override
-    public void serverStarting(FMLServerStartingEvent e) {
+    public void serverStarting(FMLServerStartingEvent e) throws IOException {
     	super.serverStarting(e);
     }
     

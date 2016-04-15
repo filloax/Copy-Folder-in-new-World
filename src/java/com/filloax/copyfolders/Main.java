@@ -1,5 +1,8 @@
 package com.filloax.copyfolders;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.filloax.copyfolders.core.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
@@ -23,6 +26,8 @@ public class Main {
         
     @SidedProxy(clientSide="com.filloax.copyfolders.core.ClientProxy", serverSide="com.filloax.copyfolders.core.ServerProxy")
     public static CommonProxy proxy;
+    
+    public static File sourceFolder;
      
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -40,7 +45,7 @@ public class Main {
     }
     
     @EventHandler
-    public void serverStarting(FMLServerStartingEvent e) {
+    public void serverStarting(FMLServerStartingEvent e) throws IOException {
     	proxy.serverStarting(e);
     }
 }
