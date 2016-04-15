@@ -1,32 +1,38 @@
-package com.filloax.improvedcommands.core;
+package com.filloax.copyfolders.core;
+
+import com.filloax.copyfolders.event.EventHandlerCommon;
 
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.play.server.S29PacketSoundEffect;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 
-public class ServerProxy extends CommonProxy{
-    @Override
+public class CommonProxy {    
+	@EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        super.preInit(e);
-    }
+		Configuration config = new Configuration(e.getSuggestedConfigurationFile());
 
-    @Override
+		config.load();
+
+			
+		config.save();
+	}
+	
+    @EventHandler
     public void init(FMLInitializationEvent e) {
-        super.init(e);
     }
 
-    @Override
+    @EventHandler   
     public void postInit(FMLPostInitializationEvent e) {
-        super.postInit(e);
+
     }
     
     @EventHandler
     public void serverLoad(FMLServerStartingEvent e) {
-    	super.serverLoad(e);
+ 
     }
     
 }

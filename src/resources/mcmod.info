@@ -1,8 +1,8 @@
 [
 {
-  "modid": "improvedcommands",
-  "name": "Improved Commands",
-  "description": "Adds various commands.",
+  "modid": "copyfolders",
+  "name": "Copy Folders in new Worlds",
+  "description": "Allows to automatically copy certain folders in new worlds.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
