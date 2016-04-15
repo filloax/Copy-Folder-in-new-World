@@ -1,10 +1,13 @@
 package com.filloax.copyfolders.core;
 
-import cpw.mods.fml.common.Mod.EventHandler;
+import java.io.File;
+import java.io.IOException;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.client.Minecraft;
 
 public class ClientProxy extends CommonProxy {
     @Override
@@ -22,8 +25,13 @@ public class ClientProxy extends CommonProxy {
         super.postInit(e);
     }
     
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent e) {
-    	super.serverLoad(e);
+    @Override
+    public void serverStarting(FMLServerStartingEvent e) {
+    	super.serverStarting(e);
+    }
+    
+    @Override
+    public File getSavesFolder() {
+    	return new File(Minecraft.getMinecraft().mcDataDir, "saves");
     }
 }

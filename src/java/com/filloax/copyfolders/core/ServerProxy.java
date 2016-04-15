@@ -1,13 +1,13 @@
 package com.filloax.copyfolders.core;
 
-import com.filloax.copyfolders.event.EventHandlerCommon;
+import java.io.File;
+import java.io.IOException;
 
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.server.FMLServerHandler;
 
 public class ServerProxy extends CommonProxy {
     @Override
@@ -18,7 +18,6 @@ public class ServerProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
-      	MinecraftForge.EVENT_BUS.register(new EventHandlerCommon());
     }
 
     @Override
@@ -26,8 +25,13 @@ public class ServerProxy extends CommonProxy {
         super.postInit(e);
     }
     
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent e) {
-    	super.serverLoad(e);
+    @Override
+    public void serverStarting(FMLServerStartingEvent e) {
+    	super.serverStarting(e);
+    }
+    
+    @Override
+    public File getSavesFolder() {
+    	return FMLServerHandler.instance().getSavesDirectory();
     }
 }
