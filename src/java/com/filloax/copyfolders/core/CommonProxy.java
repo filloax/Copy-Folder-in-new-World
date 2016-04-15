@@ -64,6 +64,7 @@ public class CommonProxy {
 			if (Main.sourceFolder.exists()) {
 				FileUtils.copyDirectory(Main.sourceFolder, worldDir);
 				alreadyDone.createNewFile();
+				System.out.println("Copied files from "+Main.sourceFolder+" to "+worldDir+".");
 			} else {
 				System.out.println("Copy source folder not found!");
 			}
